@@ -4,8 +4,7 @@ RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     sudo \
     autoconf \
     autogen \
@@ -23,13 +22,14 @@ RUN apt-get install -y \
     nasm \
     libjpeg-dev \
     libpng-dev \
-    libpng16-16
+    libpng16-16 && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.2
-RUN apt-get install -y \
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install --no-install-recommends -y \
+    php7.2 \
     php7.2-curl \
     php7.2-gd \
     php7.2-dev \
@@ -46,8 +46,9 @@ RUN apt-get install -y \
     php7.2-imap \
     php7.2-imagick \
     php-xdebug \
-    php-memcached
-RUN command -v php
+    php-memcached && \
+    rm -rf /var/lib/apt/lists/* && \
+    command -v php
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
@@ -59,7 +60,7 @@ RUN command -v composer
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
-RUN apt-get install nodejs -y
+RUN apt-get install --no-install-recommends nodejs -y
 RUN npm install npm@6.3.0 -g
 RUN command -v node
 RUN command -v npm
@@ -71,18 +72,10 @@ RUN sudo apt-get update && sudo apt-get install yarn
 
 # Ansible
 RUN apt-add-repository ppa:ansible/ansible
-RUN apt-get update
-RUN apt-get install ansible -y
-RUN command -v ansible
+RUN apt-get update && apt-get install --no-install-recommends ansible -y && rm -rf /var/lib/apt/lists/* && command -v ansible
 
 # Other
-RUN mkdir ~/.ssh
-RUN touch ~/.ssh_config
+RUN mkdir ~/.ssh && touch ~/.ssh_config
 
 # Display versions installed
-RUN php -v
-RUN composer --version
-RUN node -v
-RUN npm -v
-RUN yarn -v
-RUN ansible --version
+RUN php -v && composer --version && node -v && npm -v && yarn -v && ansible --version
