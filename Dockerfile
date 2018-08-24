@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
-#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     sudo \
