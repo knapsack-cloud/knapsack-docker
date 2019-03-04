@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     apt-utils \
     software-properties-common \
 #    python-software-properties \
-    nasm \
+    nasm && \
 #    libjpeg-dev \
 #    libpng-dev \
 #    libpng16-16 && \
@@ -41,7 +41,7 @@ RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && ap
     php7.2-bz2 \
     php7.2-sqlite \
 #    php7.2-soap \
-    php7.2-json \
+    php7.2-json && \
 #    php7.2-intl \
 #    php7.2-imap \
 #    php7.2-imagick \
