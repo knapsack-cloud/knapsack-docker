@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     wget \
     curl \
 #    rsync \
-#    ssh \
+    ssh \
 #    openssh-client \
     git \
     build-essential \
