@@ -1,0 +1,21 @@
+{
+  "name": "docker-node-php-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build --tag basaltinc/docker-node-php-base:dev .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basaltinc/docker-node-php-base.git"
+  },
+  "keywords": [],
+  "author": "Evan Lovely",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/basaltinc/docker-node-php-base/issues"
+  },
+  "homepage": "https://github.com/basaltinc/docker-node-php-base#readme"
+}
