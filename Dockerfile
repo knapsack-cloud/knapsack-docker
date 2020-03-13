@@ -6,6 +6,7 @@ RUN apk add --no-cache \
   bash \
   php \
   composer \
+  curl \
   git \
 && php --version && composer --version && node --version && yarn --version && npm --version
 
