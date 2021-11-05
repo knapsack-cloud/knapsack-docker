@@ -12,3 +12,4 @@ RUN apk add --no-cache \
 && php --version && composer --version && node --version && yarn --version && npm --version
 
 CMD ["/bin/bash"]
+
