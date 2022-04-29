@@ -6,14 +6,7 @@ RUN apk add --no-cache \
  composer \
  curl \
  git \
- openssh \
- ca-certificates \
- openssl-dev \
- wget \
- python3 \
- build-base \
- vips-dev \
-&& php --version && composer --version && node --version && yarn --version && npm --version
+ openssh
 
 RUN mkdir -p /app && chown -R node /app
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
