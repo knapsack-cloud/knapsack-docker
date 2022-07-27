@@ -1,4 +1,4 @@
-FROM node:fermium-alpine3.14
+FROM node:gallium-alpine
 
 RUN apk add --no-cache \
  bash \
